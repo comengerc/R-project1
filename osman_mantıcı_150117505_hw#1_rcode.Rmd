@@ -1,0 +1,524 @@
+---
+title: "STAT253 - Homework#1"
+author: "Osman MANTICI - 150117505"
+date: "29 Mart 2019"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r stat,echo=FALSE}
+
+x<-read.table(file="/Users/osman/Documents/R/HW#1/HW1_Data_v1.csv", header=TRUE, sep=",")
+
+attach(x)
+```
+1-)
+  Systolic bp, and diastolic bp and age variables are multivariate, discrete and quantitative.
+  The sex variable is qualitative, continuous, and bivariate.
+
+2-)
+  Dotplot, histogram, boxplot, stem-and-leaf plot, can be used when this data set read.
+  
+  When the questions are want to learn about the range, median and mean, maximum and minimum values, where is the collapses or outliers, answers are found easily. Furthermore, boxplot gives us about the five number summary rather than the others. Stem-and-leaf plot and dotplot also gives more  the exact information.  
+
+
+3-)
+
+a) Means of men and women
+
+Results are in that order, 
+men systolic blood pressure mean,
+women systolic blood pressure mean, 
+men diastolic blood pressure mean, 
+women diastolic blood pressure mean. 
+  
+```{r a, echo=FALSE}
+men_sys_mean <- mean(SYSBP[GENDER==0])
+men_sys_mean
+
+women_sys_mean <- mean(SYSBP[GENDER==1])
+women_sys_mean
+
+
+men_dias_mean <- mean(DIASBP[GENDER==0])
+men_dias_mean
+
+women_dias_mean <- mean(DIASBP[GENDER==1])
+women_dias_mean
+```
+
+
+b) Sample variance of men and women
+
+Results are in that order
+  men systolic blood pressure sample variance
+  women systolic blood pressure sample variance
+  men diastolic blood pressure sample variance
+  women diastolic blood pressure sample variance
+  
+```{r b,echo=FALSE}
+men_sys_variance <- var(SYSBP[GENDER==0])
+men_sys_variance
+
+women_sys_variance <- var(SYSBP[GENDER==1])
+women_sys_variance
+
+
+men_dias_variance <- var(DIASBP[GENDER==0])
+men_dias_variance
+
+women_dias_variance <- var(DIASBP[GENDER==1])
+women_dias_variance
+```
+
+c) Standard deviation of men and women
+
+Results are in that order
+  
+  men systolic blood pressure standard deviation
+  women systolic blood pressure standard deviation
+  men diastolic blood pressure standard deviation
+  women diastolic blood pressure standard deviation
+
+```{r c,echo=FALSE}
+
+men_sys_stddev <- sd(SYSBP[GENDER==0])
+men_sys_stddev
+
+women_sys_stddev <- sd(SYSBP[GENDER==1])
+women_sys_stddev
+
+men_dias_stddev <- sd(DIASBP[GENDER==0])
+men_dias_stddev
+
+women_dias_stddev <- sd(DIASBP[GENDER==1])
+women_dias_stddev
+```
+
+d) 1. Lower quartiles of men and women
+
+Results are in that order
+  
+  men systolic blood pressure lower quartiles
+  women systolic blood pressure lower quartiles
+  men diastolic blood pressure lower quartiles
+  women diastolic blood pressure lower quartiles
+  
+```{r d1,echo=FALSE}
+men_sys_lowerquartile <- quantile(SYSBP[GENDER==0], 0.25)
+men_sys_lowerquartile
+
+women_sys_lowerquartile <- quantile(SYSBP[GENDER==1], 0.25)
+women_sys_lowerquartile
+
+
+men_dias_lowerquartile <- quantile(DIASBP[GENDER==0], 0.25)
+men_dias_lowerquartile
+
+women_dias_lowerquartile <- quantile(DIASBP[GENDER==1], 0.25)
+women_dias_lowerquartile
+```
+
+
+d) 2. Upper quartiles of men and women
+
+Results are in that order
+  men systolic blood pressure upper quartiles
+  women systolic blood pressure upper quartiles
+  men diastolic blood pressure upper quartiles
+  women diastolic blood pressure upper quartiles
+  
+```{r d2,echo=FALSE}
+men_sys_upperquartile <- quantile(SYSBP[GENDER==0], 0.75)
+men_sys_upperquartile
+
+women_sys_upperquartile <- quantile(SYSBP[GENDER==1], 0.75)
+women_sys_upperquartile
+
+
+men_dias_upperquartile <- quantile(DIASBP[GENDER==0], 0.75)
+men_dias_upperquartile
+
+women_dias_upperquartile <- quantile(DIASBP[GENDER==1], 0.75)
+women_dias_upperquartile
+
+```
+
+
+e) 1. Maximum values of men and women
+
+Results are in that order
+  men systolic blood pressure maximum
+  women systolic blood pressure maximum
+  men diastolic blood pressure maximum
+  women diastolic blood pressure maximum
+  
+  
+```{r e1,echo=FALSE}
+men_sys_max <- max(SYSBP[GENDER==0])
+men_sys_max
+
+women_sys_max <- max(SYSBP[GENDER==1])
+women_sys_max
+
+
+men_dias_max <- max(DIASBP[GENDER==0])
+men_dias_max
+
+women_dias_max <- max(DIASBP[GENDER==1])
+women_dias_max
+```
+
+e) 2. Minimum values of men and women
+
+Results are in that order
+  men systolic blood pressure minimum
+  women systolic blood pressure minimum
+  men diastolic blood pressure minimum
+  women diastolic blood pressure minimum
+  
+  
+```{r e2,echo=FALSE}
+men_sys_min <- min(SYSBP[GENDER==0])
+men_sys_max
+
+women_sys_min <- min(SYSBP[GENDER==1])
+women_sys_min
+
+
+men_dias_min <- min(DIASBP[GENDER==0])
+men_dias_min
+
+women_dias_min <- min(DIASBP[GENDER==1])
+women_dias_min
+```
+
+
+f) Range values of men and women
+
+Results are in that order
+  men systolic blood pressure range
+  women systolic blood pressure range
+  men diastolic blood pressure range
+  women diastolic blood pressure range
+  
+
+```{r f,echo=FALSE}
+men_sys_range <- men_sys_max - men_sys_min
+men_sys_range
+
+women_sys_range <- women_sys_max - women_sys_min
+women_sys_range
+
+
+men_dias_range <- men_dias_max - men_dias_min
+men_dias_range
+
+women_dias_range <- women_dias_max - women_dias_min
+women_dias_range
+```
+
+
+g) Comparing range and standart deviations, Range values how many standard deviation of men and women
+
+Results are in that order
+  men systolic blood pressure number of standart deviations 
+  women systolic blood pressure number of standart deviations
+  men diastolic blood pressure number of standart deviations
+  women diastolic blood pressure number of standart deviations
+  
+  
+```{r g,echo=FALSE}
+men_sys_numberofstd <- men_sys_range/men_sys_stddev
+men_sys_numberofstd
+
+women_sys_numberofstd <- women_sys_range/women_sys_stddev
+women_sys_numberofstd
+
+men_dias_numberofstd <- men_dias_range/men_dias_stddev
+men_dias_numberofstd
+
+women_dias_numberofstd <- women_dias_range/women_dias_stddev
+women_dias_numberofstd
+```
+
+
+h) Median values of men and women
+
+Results are in that order
+  men systolic blood pressure median
+  women systolic blood pressure median
+  men diastolic blood pressure median
+  women diastolic pressure median
+  
+  
+```{r h,echo=FALSE}
+men_sys_median <- median(SYSBP[GENDER==0])
+men_sys_median
+
+women_sys_median <- median(SYSBP[GENDER==1])
+women_sys_median
+
+
+men_dias_median <- median(DIASBP[GENDER==0])
+men_dias_median
+
+women_dias_median <- median(DIASBP[GENDER==1])
+women_dias_median
+```
+
+i) IQR's  of men and women
+
+Results are in that order
+  men systolic blood pressure IQR's
+  women systolic blood pressure IQR's
+  men diastolic blood pressure IQR's
+  women diastolic blood pressure IQR's
+  
+  
+```{r i,echo=FALSE}
+men_sys_IQR <- IQR(SYSBP[GENDER==0])
+men_sys_IQR
+
+women_sys_IQR <- IQR(SYSBP[GENDER==1])
+women_sys_IQR
+
+
+men_dias_IQR <- IQR(DIASBP[GENDER==0])
+men_dias_IQR
+
+women_dias_IQR <- IQR(DIASBP[GENDER==1])
+women_dias_IQR
+```
+
+j) 5-number-summary  of men and women
+
+Results are in that order
+  men systolic blood pressure 5-number-summary
+  women systolic blood pressure 5-number-summary
+  men diastolic blood pressure 5-number-summary
+  women diastolic blood pressure 5-number-summary
+  
+  
+```{r j,echo=FALSE}
+men_sys_summary <- summary(SYSBP[GENDER==0])
+men_sys_summary
+
+
+women_sys_summary <- summary(SYSBP[GENDER==1])
+women_sys_summary
+
+
+
+men_dias_summary <- summary(DIASBP[GENDER==0])
+men_dias_summary
+
+
+women_dias_summary <- summary(DIASBP[GENDER==1])
+women_dias_summary
+```
+
+
+k) Boxplot of men and women
+
+Results are in that order
+  men systolic blood pressure boxplot
+# No outliers and the median of this data seen as about 120, minimum and maximum value seen about 90 and 148 respectively, and 1. quartile is about 110, 3. quartile is about 127.
+
+  women systolic blood pressure boxplot
+#There are outliers and median of this data seen as about 110, minimum and maximum value seen about 88 and 130 respectively, and 1. quartile is about 100, 3. quartile is about 120. Outliers are about 150 and 160.
+  men diastolic blood pressure boxplot
+#There are outliers and median of this data seen as about 77, minimum and maximum value seen about 57 and 95 respectively, and 1. quartile is about 70, 3. quartile is about 80. Outliers are about 97 and 100.
+  women diastolic blood pressure boxplot
+#There are outliers and median of this data seen as about 70, minimum and maximum value seen about 55 and 98 respectively, and 1. quartile is about 53, 3. quartile is about 78. Outlier is about 40.
+  
+  
+```{r k}
+boxplot(SYSBP[GENDER==0],main="MEN", xlab="Systolic Bp", horizontal = FALSE)
+
+boxplot(SYSBP[GENDER==1],main="WOMEN", xlab="Systolic Bp", horizontal = FALSE)
+
+
+boxplot(DIASBP[GENDER==0],main="MEN", xlab="Diastolic Bp", horizontal = FALSE)
+
+boxplot(DIASBP[GENDER==1],main="WOMEN",  xlab="Daistolic Bp", horizontal = FALSE)
+```
+
+
+l) Stem-and-leaf plot of men and women
+
+Results are in that order
+  men systolic blood pressure Stem-and-leaf plot
+  women systolic blood pressure Stem-and-leaf plot
+  men diastolic blood pressure Stem-and-leaf plot
+  women diastolic blood pressure Stem-and-leaf plot
+  
+  
+```{r l}
+stem(SYSBP[GENDER==0])
+
+stem(SYSBP[GENDER==1])
+
+
+stem(DIASBP[GENDER==0])
+
+stem(DIASBP[GENDER==1])
+
+```
+m) Histograms of men and women
+
+Results are in that order
+  men systolic blood pressure histogram
+  women systolic blood pressure histogram
+  men diastolic blood pressure histogram
+  women diastolic blood pressure histogram
+  
+  
+```{r m}
+hist(SYSBP[GENDER==0], right = FALSE, main = "MEN", xlab = "Systolic Bp")
+
+hist(SYSBP[GENDER==1], right = FALSE, main = "WOMEN", xlab = "Systolic Bp")
+
+
+hist(DIASBP[GENDER==0], right = FALSE, main = "MEN", xlab = "Diastolic Bp")
+
+hist(DIASBP[GENDER==1], right = FALSE, main = "WOMEN", xlab = "Diastolic Bp")
+```
+
+
+m) Dotplots of men and women
+
+Results are in that order
+  men systolic blood pressure dotplot
+  women systolic blood pressure dotplot
+  men diastolic blood pressure dotplot
+  women diastolic blood pressure dotplot
+  
+```{r n}
+
+dotchart(SYSBP[GENDER==0], main = "MEN", xlab = "Sytolic Bp")
+
+dotchart(SYSBP[GENDER==1], main = "WOMEN", xlab = "Sytolic Bp")
+
+dotchart(DIASBP[GENDER==0], main = "MEN", xlab = "Diastolic Bp")
+
+dotchart(DIASBP[GENDER==1], main = "WOMEN", xlab = "Diastolic Bp")
+
+```
+
+
+
+o) Tchebysheff’s Theorem
+
+  Yes, we can use the Tchebysheff’s Theorem because of the usability any data set without a necessity like
+mound shaped distibution or any kind. So the Tchebysheff’s Theorem also employable on this data set.
+
+
+
+p) Empirical Rule
+
+  The Empirical Rule just applicable on mound shaped data set. If we look this dataset, we realize that 
+diastolic blood pressure of men and women are mound shaped, so emprical rule can be apply our data set.
+
+
+
+
+q) Comperative Dotplots of men and women
+
+Results are in that order
+  men and women systolic blood pressure 
+  men and women diastolic blood pressure 
+
+```{r q}
+dotchart(SYSBP[GENDER==0],SYSBP[GENDER==1], main = "MEN and WOMEN", xlab = "Systolic Bp")
+
+dotchart(DIASBP[GENDER==0],DIASBP[GENDER==1], main = "MEN and WOMEN", xlab = "Diastolic Bp")
+```
+
+
+r) Relative frequency histograms of men and women
+
+Results are in that order
+  men systolic blood pressure relative freq. histogram
+  women systolic blood pressure relative freq. histogram
+  men diastolic blood pressure relative freq. histogram
+  women diastolic blood pressure relative freq. histogram
+  
+```{r r}
+# Skewed left
+hist(SYSBP[GENDER==0], prob=TRUE, main = "MEN", xlab = "Systolic Bp")
+
+# Skewed right
+hist(SYSBP[GENDER==1], prob=TRUE, main = "WOMEN", xlab = "Systolic Bp")
+
+# Mound shaped
+hist(DIASBP[GENDER==0], prob=TRUE, main = "MEN", xlab = "Diastolic Bp")
+
+# Mound shaped
+hist(DIASBP[GENDER==1], prob=TRUE, main = "WOMEN", xlab = "Diastolic Bp")
+```
+
+
+s) Z-scores for largest and smallest observation of men and women
+
+Results are in that order                                                                
+  men systolic blood pressure maximum value z-score
+# It may not be  outlier because it is close to 2
+  
+  men systolic blood pressure minimum value z-score
+# Outlier because it is smaller than -3
+  
+  women systolic blood pressure maximum value z-score
+# Outlier because it is greater than -3
+  
+  women systolic blood pressure minimum value z-score
+# Not an outlier because it is between -2 and 2
+  
+  men diastolic blood pressure maximum value z-score
+# It may not be  outlier because it is close to 2
+  
+  men diastolic blood pressure minimum value z-score
+# Not an outlier because it is between -2 and 2
+
+  women diastolic blood pressure maximum value z-score
+# It can be say outlieri it is too close to -3
+
+  women diastolic blood pressure minimum value z-score
+# Outlier because it is smaller than -3
+
+
+```{r s,echo=FALSE}
+men_sys_zscoremax <- (men_sys_max - men_sys_mean)/men_sys_stddev
+men_sys_zscoremax
+
+
+men_sys_zscoremin <- (men_sys_min - men_sys_mean)/men_sys_stddev
+men_sys_zscoremin
+
+
+women_sys_zscoremax <- (women_sys_max - women_sys_mean)/women_sys_stddev
+women_sys_zscoremax
+
+women_sys_zscoremin <- (women_sys_min - women_sys_mean)/women_sys_stddev
+women_sys_zscoremin
+
+men_dias_zscoremax <- (men_dias_max - men_dias_mean)/men_dias_stddev
+men_dias_zscoremax
+
+
+men_dias_zscoremin <- (men_dias_min - men_dias_mean)/men_dias_stddev
+men_dias_zscoremin
+
+women_dias_zscoremax <- (women_dias_max - women_dias_mean)/women_dias_stddev
+women_dias_zscoremax
+
+women_dias_zscoremin <- (women_dias_min - women_dias_mean)/women_dias_stddev
+women_dias_zscoremin
+```
+
+
